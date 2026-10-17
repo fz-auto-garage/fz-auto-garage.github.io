@@ -98,14 +98,18 @@ body.show-en .lang-bm { display: none; }
 body.show-en .lang-en { display: inline; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; padding: 54px 0 46px; text-align: center; overflow: hidden;
+.hero { position: relative; display: flex; align-items: center; text-align: center; overflow: hidden;
+  padding: 30px 0;
+  /* Fill the screen minus the header (80px) and the brand marquee (~120px) */
+  min-height: calc(100vh - 200px);
+  min-height: calc(100svh - 200px);
   background:
     linear-gradient(180deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.58) 55%, rgba(13,13,13,.95) 100%),
     radial-gradient(1200px 400px at 50% -10%, rgba(225,6,0,.22), transparent 70%),
     url('images/storefront-main.jpeg') center 28%/cover no-repeat;
   background-attachment: scroll, scroll, fixed;
-  padding-top: 70px;
 }
+.hero-inner { width: 100%; }
 .hero-stripes {
   position: absolute; inset: 0; pointer-events: none; opacity: .6;
   background-image: repeating-linear-gradient(115deg, transparent 0 46px, rgba(225,6,0,.06) 46px 48px);
@@ -272,14 +276,26 @@ body.show-en .lang-en { display: inline; }
   .header-inner { height: 64px; }
   .brand-logo { height: 42px; }
   .main-nav { inset: 64px 0 auto 0; }
-  .hero { background-attachment: scroll; }
+  /* header 64px + marquee ~112px */
+  .hero { background-attachment: scroll; min-height: calc(100vh - 176px); min-height: calc(100svh - 176px); }
 }
 
 @media (max-width: 560px) {
-  .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .section { padding: 50px 0; }
-  .hero { padding: 36px 0; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .section { padding: 48px 0; }
+  .section-head { margin-bottom: 30px; }
+  .hero { padding: 28px 0; }
+  .hero-actions .btn { width: 100%; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-contact { align-items: center; }
-  .brand-text small { display: none; }
+  /* keep logo from pushing the menu button off-screen */
+  .brand-logo { height: 38px; max-width: 54vw; }
+  .trust-label { font-size: .8rem; }
+  .brand-chip { height: 48px; width: 90px; padding: 7px 12px; }
+  .brand-chip img { max-height: 30px; max-width: 74px; }
+  .product-card h3 { font-size: .98rem; }
+  .item-badge { font-size: .74rem; padding: 2px 9px; }
+  .btn-sm { padding: 8px 12px; font-size: .78rem; }
 }
