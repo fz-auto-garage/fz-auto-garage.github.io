@@ -83,19 +83,38 @@ h1, h2, h3 { font-family: var(--head); font-weight: 700; line-height: 1.1; lette
 .main-nav { display: flex; gap: 26px; }
 .main-nav a { font-family: var(--head); font-weight: 500; text-transform: uppercase; font-size: .9rem; letter-spacing: .8px; color: var(--grey); transition: color .2s; }
 .main-nav a:hover { color: var(--red); }
+.nav-cta { display: none; }
+
+/* Compact header CTAs so both fit beside the nav */
+.header-cta { padding: 9px 15px; font-size: .84rem; }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-toggle span { width: 24px; height: 2px; background: var(--white); transition: .3s; }
 
+/* ---------- Language switch ---------- */
+.lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang-switch button {
+  font-family: var(--head); font-weight: 600; font-size: .8rem; letter-spacing: .5px;
+  background: transparent; color: var(--grey); border: 0; padding: 7px 14px; cursor: pointer; transition: .2s;
+}
+.lang-switch button.active { background: var(--red); color: #fff; }
+
+/* Language visibility — Bahasa Malaysia default, English on toggle */
+.lang-en { display: none; }
+body.show-en .lang-bm { display: none; }
+body.show-en .lang-en { display: inline; }
+
 /* ---------- Hero ---------- */
 .hero { position: relative; padding: 54px 0 46px; text-align: center; overflow: hidden;
   background:
-    radial-gradient(1200px 400px at 50% -10%, rgba(225,6,0,.18), transparent 70%),
-    linear-gradient(180deg, #000 0%, #0d0d0d 100%);
+    linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.92) 60%, #0d0d0d 100%),
+    radial-gradient(1200px 400px at 50% -10%, rgba(225,6,0,.22), transparent 70%),
+    url('images/photo-10.jpeg') center/cover no-repeat;
+  background-attachment: scroll, scroll, fixed;
 }
 .hero-stripes {
-  position: absolute; inset: 0; pointer-events: none; opacity: .5;
-  background-image: repeating-linear-gradient(115deg, transparent 0 46px, rgba(225,6,0,.05) 46px 48px);
+  position: absolute; inset: 0; pointer-events: none; opacity: .6;
+  background-image: repeating-linear-gradient(115deg, transparent 0 46px, rgba(225,6,0,.06) 46px 48px);
 }
 .hero-inner { position: relative; }
 .hero-banner {
@@ -110,15 +129,20 @@ h1, h2, h3 { font-family: var(--head); font-weight: 700; line-height: 1.1; lette
 .hero-badges { list-style: none; display: flex; gap: 10px 22px; justify-content: center; flex-wrap: wrap; }
 .hero-badges li { font-family: var(--head); text-transform: uppercase; font-size: .82rem; letter-spacing: .8px; color: var(--grey); }
 
-/* ---------- Trust bar ---------- */
-.trust-bar { background: var(--red); padding: 16px 0; }
-.trust-inner { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; justify-content: center; }
-.trust-inner > span { font-family: var(--head); text-transform: uppercase; letter-spacing: .8px; font-size: .9rem; }
-.brand-logos { display: flex; gap: 8px 18px; flex-wrap: wrap; justify-content: center; }
-.brand-logos span {
-  font-family: var(--head); font-weight: 600; font-size: .82rem; letter-spacing: 1px;
-  background: rgba(0,0,0,.25); padding: 4px 11px; border-radius: 6px;
+/* ---------- Trust bar (marquee) ---------- */
+.trust-bar { background: var(--red); padding: 14px 0; overflow: hidden; }
+.trust-label { text-align: center; font-family: var(--head); text-transform: uppercase; letter-spacing: 1px; font-size: .92rem; margin-bottom: 10px; }
+.marquee { overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: inline-flex; gap: 14px; white-space: nowrap; width: max-content; animation: scroll-left 32s linear infinite; }
+.marquee-track span {
+  font-family: var(--head); font-weight: 600; font-size: .9rem; letter-spacing: 1px;
+  background: rgba(0,0,0,.28); padding: 6px 16px; border-radius: 8px; flex: none;
 }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+.pin-icon { width: 16px; height: 16px; fill: currentColor; flex: none; }
 
 /* ---------- Sections ---------- */
 .section { padding: 70px 0; }
@@ -168,6 +192,15 @@ h1, h2, h3 { font-family: var(--head); font-weight: 700; line-height: 1.1; lette
 .shop-note { text-align: center; margin-top: 30px; color: var(--grey); }
 .shop-note a { color: var(--red); font-weight: 600; }
 
+/* ---------- Gallery ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.gallery figure { margin: 0; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); }
+.gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .45s ease; }
+.gallery figure:hover img { transform: scale(1.06); }
+
+/* ---------- Storefront image (location) ---------- */
+.storefront { width: 100%; max-height: 420px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); margin-bottom: 30px; display: block; }
+
 /* ---------- Why us ---------- */
 .why-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
 .why-text h2 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); margin: 10px 0 24px; }
@@ -213,6 +246,7 @@ h1, h2, h3 { font-family: var(--head); font-weight: 700; line-height: 1.1; lette
 @media (max-width: 900px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
   .why-grid, .location-grid { grid-template-columns: 1fr; }
   .why-photo { max-width: 360px; margin: 0 auto; }
 
@@ -221,10 +255,12 @@ h1, h2, h3 { font-family: var(--head); font-weight: 700; line-height: 1.1; lette
     flex-direction: column; gap: 0; padding: 0; max-height: 0; overflow: hidden;
     border-bottom: 1px solid var(--line); transition: max-height .3s ease;
   }
-  .main-nav.open { max-height: 320px; }
+  .main-nav.open { max-height: 480px; }
   .main-nav a { padding: 16px 20px; border-bottom: 1px solid var(--line); width: 100%; }
+  .nav-cta { display: block; color: #fff; font-weight: 700; }
   .header-cta { display: none; }
   .nav-toggle { display: flex; }
+  .hero { background-attachment: scroll; }
 }
 
 @media (max-width: 560px) {
