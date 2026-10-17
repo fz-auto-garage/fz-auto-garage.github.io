@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fz-auto-garage.github.io/sitemap.xml
