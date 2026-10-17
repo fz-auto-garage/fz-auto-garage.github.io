@@ -100,10 +100,11 @@ body.show-en .lang-en { display: inline; }
 /* ---------- Hero ---------- */
 .hero { position: relative; padding: 54px 0 46px; text-align: center; overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(10,10,10,.80) 0%, rgba(10,10,10,.88) 55%, #0d0d0d 100%),
-    radial-gradient(1200px 400px at 50% -10%, rgba(225,6,0,.25), transparent 70%),
-    url('images/storefront-main.jpeg') center 30%/cover no-repeat;
+    linear-gradient(180deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.58) 55%, rgba(13,13,13,.95) 100%),
+    radial-gradient(1200px 400px at 50% -10%, rgba(225,6,0,.22), transparent 70%),
+    url('images/storefront-main.jpeg') center 28%/cover no-repeat;
   background-attachment: scroll, scroll, fixed;
+  padding-top: 70px;
 }
 .hero-stripes {
   position: absolute; inset: 0; pointer-events: none; opacity: .6;
@@ -115,8 +116,8 @@ body.show-en .lang-en { display: inline; }
   border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,.6);
   margin-bottom: 30px;
 }
-.hero-title { font-size: clamp(2rem, 6vw, 3.6rem); margin-bottom: 14px; }
-.hero-sub { font-size: clamp(1rem, 2.4vw, 1.25rem); color: #e8e8e8; max-width: 640px; margin: 0 auto 26px; }
+.hero-title { font-size: clamp(2rem, 6vw, 3.6rem); margin-bottom: 14px; text-shadow: 0 2px 20px rgba(0,0,0,.85), 0 1px 4px rgba(0,0,0,.9); }
+.hero-sub { font-size: clamp(1rem, 2.4vw, 1.25rem); color: #f0f0f0; max-width: 640px; margin: 0 auto 26px; text-shadow: 0 1px 10px rgba(0,0,0,.9); }
 .hero-sub .en { display: block; font-size: .92rem; margin-top: 4px; }
 .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
 .hero-badges { list-style: none; display: flex; gap: 10px 22px; justify-content: center; flex-wrap: wrap; }
