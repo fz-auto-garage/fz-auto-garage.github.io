@@ -98,16 +98,15 @@ body.show-en .lang-bm { display: none; }
 body.show-en .lang-en { display: inline; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; display: flex; align-items: center; text-align: center; overflow: hidden;
-  padding: 30px 0;
+.hero { position: relative; display: flex; align-items: flex-end; text-align: center; overflow: hidden;
+  padding: 30px 0 44px;
   /* Fill the screen minus the header (80px) and the brand marquee (~120px) */
   min-height: calc(100vh - 200px);
   min-height: calc(100svh - 200px);
   background:
-    linear-gradient(180deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.58) 55%, rgba(13,13,13,.95) 100%),
-    radial-gradient(1200px 400px at 50% -10%, rgba(225,6,0,.22), transparent 70%),
-    url('images/storefront-main.jpeg') center 28%/cover no-repeat;
-  background-attachment: scroll, scroll, fixed;
+    linear-gradient(180deg, rgba(10,10,10,.12) 0%, rgba(10,10,10,.30) 42%, rgba(10,10,10,.78) 78%, rgba(13,13,13,.97) 100%),
+    url('images/storefront-main.jpeg') center 22%/cover no-repeat;
+  background-attachment: scroll, fixed;
 }
 .hero-inner { width: 100%; }
 .hero-stripes {
